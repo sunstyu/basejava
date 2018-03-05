@@ -40,7 +40,8 @@ public class MainArray {
                     printAll();
                     break;
                 case "get":
-                    System.out.println(ARRAY_STORAGE.get(uuid));
+                    Resume getRes = ARRAY_STORAGE.get(uuid);
+                    System.out.println(getRes==null ? "Значение не найдено." : getRes);
                     break;
                 case "clear":
                     ARRAY_STORAGE.clear();

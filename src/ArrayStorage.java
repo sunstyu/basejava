@@ -3,6 +3,9 @@ import java.util.Arrays;
 /**
  * Array based storage for Resumes
  */
+
+//тестирую выгрузку в github из IDEA
+
 public class ArrayStorage {
     final private int STORAGE_MAX_SIZE = 10000;
     Resume[] storage = new Resume[STORAGE_MAX_SIZE];

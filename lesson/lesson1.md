@@ -85,7 +85,7 @@
    - Не меняйте синтаксис методов `com.urise.webapp.storage.ArrayStorage` и не меняйте класс `com.urise.webapp.model.Resume`. Нужет только код внутри готовых методов `com.urise.webapp.storage.ArrayStorage`
    - [Массивы](http://study-java.ru/uroki-java/massivy-v-java/)
    - [Java массивы](http://info.javarush.ru/javarush_articles/2015/12/10/Java-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D1%8B.html)
-- Протестируйте вашу реализацию, запустив `MainTestArrayStorage.main()`: в IDEA слева на полях зеленая стрелка.
+- Протестируйте вашу реализацию, запустив `com.urise.webapp.MainTestArrayStorage.main()`: в IDEA слева на полях зеленая стрелка.
 - Протестируйте вашу реализацию интерактивно с помощью `com.urise.webapp.MainArray.main()`.
 - Дополнительные материалы по IntelliJ IDEA
   - <a href="https://github.com/JavaOPs/topjava/wiki/IDEA">Idea Wiki</a> (поставить кодировку UTF-8, поменять фонт по умолчанию на DejaVu)

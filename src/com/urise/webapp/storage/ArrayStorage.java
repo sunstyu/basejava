@@ -21,6 +21,7 @@ public class ArrayStorage {
     public void update(Resume r) {
         int i = this.getUuidIndex(r.getUuid());
         if (i >= 0) {
+            storage[i] = r;
             System.out.println("----------------------------");
             System.out.printf("Элемент %s обновлен%n", storage[i].getUuid());
         } else {

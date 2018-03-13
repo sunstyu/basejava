@@ -9,64 +9,63 @@ import java.util.Arrays;
  */
 
 public class ArrayStorage {
-    final private int STORAGE_MAX_SIZE = 10000;
+    private final int STORAGE_MAX_SIZE = 10000;
     private Resume[] storage = new Resume[STORAGE_MAX_SIZE];
-    private int size = 0;
+    private int size;
 
     public void clear() {
         Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
-    public void update(Resume r) {
-        int i = this.getUuidIndex(r.getUuid());
-        if (i >= 0) {
-            storage[i] = r;
+    public void update(Resume resume) {
+        int index = getUuidIndex(resume.getUuid());
+        if (index >= 0) {
+            storage[index] = resume;
             System.out.println("----------------------------");
-            System.out.printf("Элемент %s обновлен%n", storage[i].getUuid());
+            System.out.printf("Элемент %s обновлен%n", storage[index].getUuid());
         } else {
             System.out.println("----------------------------");
             System.out.println("Элемент не найден");
         }
     }
 
-    public void save(Resume r) {
-        //сохраняем только если такого элемента еще нет в массиве
-        if (this.getUuidIndex(r.getUuid()) == -1) {
-            //если есть место в массиве
-            if (size < STORAGE_MAX_SIZE) {
-                if (r.getUuid() != null) {
-                    storage[size] = r;
-                    size++;
-                } else {
-                    System.out.println("----------------------------");
-                    System.out.println("Передано пустое значение");
-                }
-            } else {
-                System.out.println("----------------------------");
-                System.out.println("Недостаточно места для сохранения резюме.");
-            }
-        } else {
+    public void save(Resume resume) {
+        if (resume.getUuid() == null) {
+            System.out.println("----------------------------");
+            System.out.println("Передано пустое значение");
+            return;
+        }
+        if (size >= STORAGE_MAX_SIZE) {
+            System.out.println("----------------------------");
+            System.out.println("Недостаточно места для сохранения резюме.");
+            return;
+        }
+        int index = getUuidIndex(resume.getUuid());
+        if (getUuidIndex(resume.getUuid()) != -1) {
             System.out.println("----------------------------");
             System.out.println("Такой элемент уже существует!");
+            return;
         }
+        storage[size] = resume;
+        size++;
+
     }
 
     public Resume get(String uuid) {
-        int i = this.getUuidIndex(uuid);
-        if (i >= 0) {
-            return storage[i];
-        } else {
-            System.out.println("----------------------------");
-            System.out.println("Элемент не найден");
-            return null;
+        int index = getUuidIndex(uuid);
+        if (index >= 0) {
+            return storage[index];
         }
+        System.out.println("----------------------------");
+        System.out.println("Элемент не найден");
+        return null;
     }
 
     public void delete(String uuid) {
-        int i = this.getUuidIndex(uuid);
-        if (i >= 0) {
-            storage[i] = storage[size - 1];
+        int index = getUuidIndex(uuid);
+        if (index >= 0) {
+            storage[index] = storage[size - 1];
             storage[size - 1] = null;
             size--;
         } else {
